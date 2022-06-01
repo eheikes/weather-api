@@ -6,6 +6,11 @@ import { convertResponse } from '../../utils/weatherResponseConverter';
 
 const logger = getLogger();
 
+/**
+ * Api handler for current weather route
+ * @param params
+ * @returns {Promise<{alerts, currentTemperature: string, currentCondition: string}>}
+ */
 export const api = async (params) => {
   // validate required parameters
   ensureParamExists(

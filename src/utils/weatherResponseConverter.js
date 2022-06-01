@@ -33,7 +33,7 @@ export const tempToString = (temp) => {
 };
 
 /**
- * Converts alerts to a siplier format which includes the event type and description
+ * Converts alerts to a simpler format which includes the event type and description
  * @param alerts
  * @returns {*}
  */

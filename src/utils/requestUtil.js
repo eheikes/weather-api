@@ -1,5 +1,10 @@
 import createError from 'http-errors';
 
+/**
+ * Validates that the parameter specified exists and if not throws a BadRequest error (status 400)
+ * @param expectedParamName
+ * @param params
+ */
 export const ensureParamExists = (
   expectedParamName,
   params,
