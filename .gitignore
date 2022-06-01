@@ -1,5 +1,6 @@
 # intellij files
 .idea
+/weather-api.iml
 
 # outputs
 output
