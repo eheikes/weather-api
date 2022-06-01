@@ -1,0 +1,31 @@
+= Overview
+
+The weather-api project exposes a Rest Api which proxies requests to the openweathermap apis to retrieve the weather for
+a given lat/lon. Configuration of the weather-api project is done through dotenv (.env and .env.local files). Users of weather-api can utilize the npm run scripts defined in package.json to start, test, lint, etc.
+
+== Prerequisites
+. NPM 8.11.0
+. OpenWeatherMap OneCall Subscription and API Key
+.. This subscription and api key can be obtained from https://openweathermap.org/guide
+.. Once obtained the api key must be configured in .env.local
+
+== Configuration
+Configuration of the weather-api project utilizes dotenv. All configuration parameters can be seen in the
+link:.env[.env] file. To prevent accidentally adding api keys into source code it is recommended that the user copies
+the .env to create a .env.local in the root directory.
+
+== Running the project
+To run the weather-api project:
+
+. From the root of the project run: npm run start
+
+== Executing the api
+You can use your favorite Rest Api tool like curl, postman, or a browser to execute the weather-api rest apis. Here is an example using curl: curl 'http://localhost:8080/weather/current?lat=90&lon=90'
+
+== Logging
+Logs are written to link:./output/weather-api.log[./output/weather-api.log]
+
+== Testing / Coverage
+Unit tests can be executed by executing the npm test run script.  From the root of the project run: npm run test
+
+Test coverage can be calculated by executing the following from the root of the project: npm run coverage.  Unit test coverage minimums are defined in package.json.
