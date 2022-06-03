@@ -23,6 +23,8 @@ To run the weather-api project:
 == Executing the api
 You can use your favorite Rest Api tool like curl, postman, or a browser to execute the weather-api rest apis. Here is an example using curl: curl 'http://localhost:8080/weather/current?lat=90&lon=90'
 
+Note: the above link assumes weather-api is running on port 8080. This can be changed using the PORT environment variable through .env.local .
+
 == Logging
 Logs are written to link:./output/weather-api.log[./output/weather-api.log]
 
@@ -30,3 +32,10 @@ Logs are written to link:./output/weather-api.log[./output/weather-api.log]
 Unit tests can be executed by executing the npm test run script.  From the root of the project run: npm run test
 
 Test coverage can be calculated by executing the following from the root of the project: npm run coverage.  Unit test coverage minimums are defined in package.json.
+
+== OpenAPI Doc
+The weather-api project exposes an OpenAPI document hosted at http://localhost:8080/api-docs/openapi.json .
+
+An interactive Swagger UI is available at http://localhost:8080/api-docs
+
+Note: the above link assumes weather-api is running on port 8080. This can be changed using the PORT environment variable through .env.local .
