@@ -1,28 +1,37 @@
 import { fail } from 'assert';
-import { expect } from 'chai';
-import createError from 'http-errors';
 import { ensureParamExists } from './requestUtil';
 
 describe('requestUtil', () => {
   describe('ensureParamExists', () => {
     it('should throw BadRequest error if parameter does not exist', () => {
-      expect(() => ensureParamExists(
-        'doesNotExist',
-        { exists: 'exists' },
-      ))
-        .to
-        .throw(createError.BadRequest);
+      try {
+        ensureParamExists(
+          'doesNotExist',
+          {},
+        );
+        fail('Error not thrown');
+      } catch (e) {
+        // expected
+      }
     });
 
-    it('should return if parameter is present', () => {
+    it('should throw BadRequest error if parameter exists with null data', () => {
       try {
         ensureParamExists(
           'exists',
-          { exists: 'exists' },
+          { exists: null },
         );
-      } catch (error) {
-        fail('error thrown');
+        fail('Error not thrown');
+      } catch (e) {
+        // expected
       }
+    });
+
+    it('should not throw error if parameter is present', () => {
+      ensureParamExists(
+        'exists',
+        { exists: 'exists' },
+      );
     });
   });
 });

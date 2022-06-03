@@ -1,6 +1,4 @@
-import {
-  configure as configureLogging,
-} from 'log4js';
+import { configure as configureLogging } from 'log4js';
 import { config as configureDotEnv } from 'dotenv-flow';
 
 /**

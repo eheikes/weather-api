@@ -18,9 +18,5 @@ export const getCurrentWeather = async (
   const apiResult = await axios.get(weatherUrl);
   logger.debug(`api result status:${(apiResult.status)} data:${JSON.stringify(apiResult.data)}`);
 
-  if (apiResult.status !== 200) {
-    throw new Error(`Openweathermap api call failed with status ${apiResult.status}`);
-  }
-
   return apiResult.data;
 };
