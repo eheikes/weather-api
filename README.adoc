@@ -4,6 +4,7 @@ The weather-api project exposes a Rest Api which proxies requests to the openwea
 a given lat/lon. Configuration of the weather-api project is done through dotenv (.env and .env.local files). Users of weather-api can utilize the npm run scripts defined in package.json to start, test, lint, etc.
 
 == Prerequisites
+. NodeJS 18.2.0
 . NPM 8.11.0
 . OpenWeatherMap OneCall Subscription and API Key
 .. This subscription and api key can be obtained from https://openweathermap.org/guide

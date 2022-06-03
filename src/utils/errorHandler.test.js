@@ -29,5 +29,18 @@ describe('errorHandler', () => {
       expect(res.status).to.eql(400);
       expect(res.body.message).to.equal('this was a bad request');
     });
+
+    it('returns unexpected error', () => {
+      const testError = new Error('unexpected error');
+      const req = {};
+      const res = mockResponse();
+      handleError(testError, req, res);
+
+      expect(res.header).to.eql({
+        headerName: 'Content-Type',
+        headerValue: 'application/json',
+      });
+      expect(res.status).to.eql(500);
+    });
   });
 });

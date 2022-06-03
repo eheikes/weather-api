@@ -1,7 +1,11 @@
 import { expect } from 'chai';
-import { simplifyAlerts, tempToString } from './weatherResponseConverter';
+import {
+  convertResponse,
+  simplifyAlerts,
+  tempToString,
+} from './weatherResponseConverter';
 
-describe('requestUtil', () => {
+describe('weatherResponseConverter', () => {
   describe('tempToString', () => {
     it('handles boundaries', () => {
       expect(tempToString(85))
@@ -80,6 +84,32 @@ describe('requestUtil', () => {
           'Severe Weather Statement: ...SEVERE THUNDERSTORM WARNING FOR...',
           'Severe Weather Statement: ...THE SEVERE THUNDERSTORM WARNING FOR...',
         ]);
+    });
+  });
+
+  describe('convertResponse', () => {
+    it('returns expected data', () => {
+      const result = convertResponse({
+        current: {
+          temp: 70,
+          weather: [
+            { main: 'Clear' },
+          ],
+        },
+        alerts: [
+          {
+            event: 'Alert',
+            description: 'alertData',
+          },
+        ],
+      });
+      expect(result)
+        .to
+        .eql({
+          currentCondition: 'clear',
+          currentTemperature: 'moderate',
+          alerts: ['Alert: alertData'],
+        });
     });
   });
 });

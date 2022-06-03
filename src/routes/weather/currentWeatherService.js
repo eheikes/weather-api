@@ -11,7 +11,9 @@ const logger = getLogger();
  * @param params
  * @returns {Promise<{alerts, currentTemperature: string, currentCondition: string}>}
  */
-export const api = async (params) => {
+export const currentWeatherService = async (params) => {
+  logger.debug(`Processing current weather request with params ${params}`);
+
   // validate required parameters
   ensureParamExists(
     'lat',

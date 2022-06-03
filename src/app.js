@@ -2,8 +2,9 @@ import express from 'express';
 import { getLogger } from 'log4js';
 
 import { config } from './config';
-import { api } from './routes/weather/current';
+import { currentWeatherService } from './routes/weather/currentWeatherService';
 import { handleError } from './utils/errorHandler';
+import { wrapRouteWithLoggingAndErrorHandling } from './utils/routeHelper';
 
 // set up global config
 config();
@@ -12,14 +13,10 @@ const logger = getLogger();
 const app = express();
 
 // Adds the current weather route to the express app
-app.get('/weather/current', async (req, res, next) => {
-  logger.debug(`Received request for url:${req.url} params:${JSON.stringify(req.query)}`);
-  try {
-    res.send(await api(req.query));
-  } catch (error) {
-    next(error);
-  }
-});
+app.get(
+  '/weather/current',
+  wrapRouteWithLoggingAndErrorHandling(currentWeatherService),
+);
 
 // register the error handler with express
 app.use(handleError);
